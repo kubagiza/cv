@@ -1,0 +1,383 @@
+/* ==== PALETA I TOK TYPOGRAFII ==== */
+:root{
+  --bg: #0F1720;              /* tło jasnego trybu (lekki grafit) */
+  --bg1: #16212B;             /* powierzchnia jasnego trybu */
+  --surface: #111B22;         /* karty / header w dark */
+  --surface-2: #0B1218;
+  --text: #0C1418;            /* tekst w jasnym trybie */
+  --text-muted: #455A64;
+
+  --primary: #00E5FF;         /* cyan – kolor przewodni */
+  --primary-700:#00B8D4;
+  --accent: #FFB000;          /* ciepły kontrapunkt */
+  --ok:#00C853; --warn:#FFAB00; --danger:#FF5252;
+
+  --ring: rgba(0,229,255,.35);
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+
+  --radius: 16px;
+  --radius-sm: 12px;
+
+  /* kompat z Twoimi nazwami */
+  --main-color: var(--surface);
+  --menu-color: #0E151B;
+  --color: #E5F3F4;           /* domyślny kolor tekstu (dark) */
+  --colordark: #93A4A6;       /* nieużywane/legacy */
+  --colormenu: #0E151B;
+}
+
+/* DARK MODE – aktywowany przez .dark na <body> (masz to w HTML) */
+.dark{
+  --bg: #0B1218;
+  --bg1:#0B1218;
+  --surface:#111B22;
+  --surface-2:#0B1218;
+  --color:#E5F3F4;
+  --text-muted:#A5B7BA;
+  --menu-color:#0E151B;
+  --main-color: var(--surface);
+}
+
+/* TYPOGRAFIA */
+@supports(font-variation-settings: normal){
+  :root{ --font-ui: "Inter", system-ui, Segoe UI, Roboto, Arial, sans-serif; }
+}
+body{
+  font-family: var(--font-ui, system-ui, sans-serif);
+  color: var(--color);
+  background: radial-gradient(1200px 800px at 20% -10%, rgba(0,229,255,.08), transparent 60%),
+              radial-gradient(900px 700px at 110% 10%, rgba(255,176,0,.06), transparent 60%),
+              var(--bg);
+  text-align: left;           /* bardziej „aplikacyjne” */
+}
+
+/* CENTRALNY CONTAINER */
+.page-wrap{
+  max-width: 1280px;
+  margin: 24px auto;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)) , var(--surface-2);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,.06);
+  overflow: hidden;
+}
+
+/* HEADER z gradientem i delikatną poświatą */
+header{
+  background: linear-gradient(135deg, #0E1A20 0%, #111827 65%, rgba(0,229,255,.18) 100%);
+  color: var(--color);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 20px 50px rgba(0,0,0,.35);
+  text-align: center;
+}
+header h1{
+  font-size: clamp(1.4rem, 1.2rem + 1.2vw, 2.2rem);
+  line-height: 1.15;
+  letter-spacing: .2px;
+}
+.avatar-small{
+  width:56px; height:56px; margin-left:.5rem; vertical-align: middle;
+  filter: drop-shadow(0 6px 14px rgba(0,229,255,.35));
+}
+
+/* NAV – pigułki z podkreśleniem aktywnym */
+nav.menu{
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(255,255,255,.06);
+  backdrop-filter: blur(8px);
+}
+nav a{
+  color: var(--color);
+  position: relative;
+  padding: .6rem .9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  opacity: .9;
+  transition: opacity .2s ease, transform .2s ease;
+  text-align: center;
+}
+nav a:hover{
+  opacity: 1;
+  transform: translateY(-1px);
+  text-align: center;
+}
+nav a::after{
+  content:"";
+  position:absolute; left:10%; right:10%; bottom:-6px; height:2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  border-radius:2px; opacity:0; transform: translateY(2px);
+  transition: .25s ease;
+}
+nav a:hover::after{ opacity:1; transform: translateY(0); }
+
+/* HAMBURGER */
+.menu-icon span, .menu-icon span::before, .menu-icon span::after{
+  background: var(--color);
+}
+
+/* PRZYCISK „Dark Mode” jako przycisk główny */
+button{
+  padding: .9rem 1.1rem;
+  border-radius: 14px;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-700) 100%);
+  color: #001217;
+  font-weight: 700;
+  border: 0;
+  box-shadow: 0 10px 24px rgba(0,229,255,.28);
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+  animation: none;            /* koniec z ciągłym pulsem */
+}
+button:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(0,229,255,.35);
+  filter: brightness(1.03);
+}
+button:active{ transform: translateY(0); }
+button:focus-visible{
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 16px;
+}
+
+/* KARTY (skill, project, Opisgallery2) – szkło */
+.skill, .project, .Opisgallery2 .project{
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  text-align: center;
+}
+.skill h2, .project h2, .Opisgallery2 h2 .project h2{
+  margin-bottom: .75rem;
+  text-align: center;
+}
+
+.title {
+    text-align: center;
+}
+.skill p, .project td, .Opisgallery2 .project{
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* TABELA projektów – wersja „kafelkowa” */
+.table-header{
+  gap: .5rem;
+}
+.table-header-row{
+  gap: .5rem;
+}
+
+/* .table-header th, .table-header td{
+  padding: .85rem 1rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.06);
+  text-align: center;
+} */
+
+/* GALERIE – mocniejsze karty z hoverem */
+.gallery, .gallery1{
+  gap: 1.25rem;
+  text-align: center;
+}
+.gallery img, .gallery1 img{
+    text-align: center;
+  flex: 1 1 auto;
+  max-width: 360px;           /* nieco większe */
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 14px 34px rgba(0,0,0,.45);
+  outline: 1px solid rgba(255,255,255,.06);
+  transition: transform .35s cubic-bezier(.2,.8,.2,1),
+              box-shadow .35s ease, outline-color .35s ease, filter .35s ease;
+}
+.gallery img:hover, .gallery1 img:hover{
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 26px 60px rgba(0,0,0,.55);
+  outline-color: rgba(0,229,255,.45);
+  filter: saturate(1.05);
+  text-align: center;
+}
+
+/* WIDEO */
+.video-section iframe{
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+/* STOPKA */
+footer{
+    text-align: center;
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
+  border-top: 1px solid rgba(255,255,255,.08);
+  color: var(--text-muted);
+}
+
+/* RESPONSYWNOŚĆ – drobne doszlify */
+@media (max-width: 600px){
+  nav.menu{
+    border-radius: 12px;
+  }
+  .gallery img, .gallery1 img{
+    max-width: 100%;
+    border-radius: 16px;
+  }
+}
+
+/* Preferencje dostępności */
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}
+
+/* ============================================================
+   OVERRIDES — wyrównanie do jednej kolumny, równe zdjęcia,
+   jaśniejszy tekst i wyższy kontrast
+   Wklej NA KOŃCU pliku CSS.
+   ============================================================ */
+
+/* Globalnie jaśniejszy tekst i lepszy kontrast */
+:root{
+  --color: #F2FBFC;           /* tekst główny – bardzo czytelny */
+  --text-muted: #C9D7DA;      /* opisy / meta – też jaśniejsze */
+}
+.dark{
+  --color: #F6FEFF;
+  --text-muted: #D4E2E5;
+}
+
+body{
+  text-align: left;           /* zamiast center */
+  color: var(--color);
+}
+
+/* Jedna wspólna kolumna */
+:root{
+  --col-max: 1040px;                  /* szerokość kolumny */
+  --col-pad: clamp(16px, 3vw, 32px);  /* wewnętrzne marginesy */
+  --gap: clamp(16px, 2.5vw, 28px);    /* pionowe odstępy */
+}
+
+.page-wrap{
+  max-width: calc(var(--col-max) + 2*var(--col-pad));
+  padding-inline: var(--col-pad);
+}
+
+/* Główna siatka treści — pojedyncza kolumna */
+.content{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: var(--gap);
+}
+
+/* Wszystkie sekcje trzymają jedną linię i tę samą szerokość */
+.content > section,
+.skill,
+.project,
+.Opisgallery2,
+.table-header{
+  width: 100%;
+  max-width: var(--col-max);
+  margin-inline: auto;
+}
+
+/* Nagłówki i akapity – czytelniejsze */
+h1, h2, h3{ line-height: 1.15; }
+h2{ font-size: clamp(1.35rem, 1.05rem + 1.2vw, 2rem); }
+
+.skill p,
+.project td,
+.Opisgallery2,
+.table-header td{
+  color: var(--text-muted);
+  font-size: clamp(0.98rem, 0.92rem + 0.3vw, 1.05rem);
+}
+
+/* Karty: spójne obramowanie i szerokość */
+.skill, .project, .Opisgallery2{
+  max-width: var(--col-max);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.10);
+  
+}
+
+/* Tabela projektów rozciągnięta i wyrównana */
+.table-header{ width: 100%; }
+.table-header-row{
+  width: 100%;
+  justify-content: flex-start;
+  gap: 0.75rem;
+}
+
+/* ============================================================
+   GALERIE — równe rozmiary zdjęć
+   ============================================================ */
+:root{
+  --img-w: 360px;
+  --img-h: 240px;   /* format 3:2 — uniwersalny */
+  
+}
+
+.gallery,
+.gallery1{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--img-w), 1fr));
+  gap: 1.25rem;
+  justify-items: center;
+}
+
+.gallery img,
+.gallery1 img{
+  width: var(--img-w);
+  height: var(--img-h);
+  object-fit: cover;
+  border-radius: 18px;
+  outline: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 14px 34px rgba(0,0,0,.45);
+  transition: transform .28s ease, outline-color .28s ease, box-shadow .28s ease, filter .28s ease;
+}
+
+/* Unieważnij stare limity rozmiarów / proporcji */
+.gallery img,
+.gallery1 img{
+  max-width: none !important;
+  aspect-ratio: auto !important;
+}
+
+/* Hover – subtelny, ale responsywny */
+.gallery img:hover,
+.gallery1 img:hover{
+  transform: translateY(-6px) scale(1.02);
+  outline-color: rgba(0,229,255,.45);
+  box-shadow: 0 26px 60px rgba(0,0,0,.55);
+  filter: saturate(1.03);
+}
+
+/* Wideo dopasowane do kolumny */
+.video-section iframe{
+  max-width: var(--col-max);
+  margin-inline: auto;
+  display: block;
+}
+
+/* Header i nawigacja spięte z kolumną */
+header{
+  max-width: calc(var(--col-max) + 2*var(--col-pad));
+  margin-inline: auto;
+}
+nav.menu{ justify-content: flex-start; }
+
+/* Mobile */
+@media (max-width: 700px){
+  :root{
+    --img-w: 100%;
+    --img-h: 220px;   /* płytszy kadr, lepsza czytelność listy */
+    --iframe-w: 100%;
+    --iframe-h: 180px;
+  }
+
+  .gallery,
+  .gallery1{ grid-template-columns: 1fr; }
+}

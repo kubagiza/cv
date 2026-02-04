@@ -1,0 +1,218 @@
+:root {
+  --dark:#444;
+  --beige:#efe8df;
+  --accent:#007bff;
+  font-family:"Segoe UI",sans-serif;
+}
+
+body{
+  background:#f5f5f5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  margin:0;
+}
+
+.cv-wrapper{
+  /* width:90%;
+  //height: 1000px; */
+  max-width:720px;
+  background:#fff;
+  border-radius:8px;
+  box-shadow:0 8px 25px rgba(0,0,0,.15);
+  overflow:hidden;
+}
+
+/* ===== Header ===== */
+header{
+  background:var(--dark);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:10px 24px;
+  position:relative;
+}
+
+.avatar{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  object-fit:scale-down;
+
+  /* centrowanie zdjecia w obiekcie */
+}
+
+.avatar-small{
+  width:100px;
+  height:100px;
+  object-fit:scale-down;;
+  margin-left:auto;
+}
+
+.email-icon, .phone-icon, .linkedin-icon{
+  width: 16px;
+  height:16px;
+  margin-right: 5px;
+}
+/* ===== Kolumny ===== */
+.content{
+  display:flex;
+}
+
+aside{
+  background-color:#b6b0b065;
+  padding:0px 24px;
+  flex:0 0 240px;
+  height: 1000px;
+}
+
+main{
+  padding:30px 36px;
+  flex:1;
+}
+h2{
+  font-size:1.05rem;
+  margin:0 0 8px;
+  padding-bottom:6px;
+  border-bottom:1px solid #999;
+}
+h3{
+  margin:32px 0 8px;
+  font-size:.9rem;
+  color:#333;
+}
+ul{padding-left:18px;margin:6px 0;}
+.period{font-size:.8rem;color:#8f6a6a;}
+
+.title-block{
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.summary{
+  background: #f9f9f9;
+  text-align:center; 
+  /* wysrodkowany tekst */
+}
+
+.expierience, .summary-h2, .expierience-h2, .job, .referention-h2, .referention
+{
+    background: #f9f9f9;
+}
+
+/* ===== Responsywność ===== */
+/* ===== Lepsza responsywność (dopisz na końcu pliku) ===== */
+
+/* tablet i mniejsze */
+@media (max-width: 720px){
+  body{
+    align-items: flex-start;          /* żeby nie "wisiał" na środku ekranu */
+    padding: 16px;
+  }
+
+  .cv-wrapper{
+    width: 100%;
+    max-width: 720px;
+    border-radius: 10px;
+  }
+
+  header{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 16px;
+  }
+
+  .avatar{
+    width: 110px;
+    height: 110px;
+  }
+
+  .avatar-small{
+    width: 80px;
+    height: 80px;
+    margin-left: 0;                  /* bo w kolumnie auto-margines nie ma sensu */
+  }
+
+  .content{
+    flex-direction: column;
+  }
+
+  aside{
+    flex: none;
+    height: auto;                    /* ważne: koniec z 1000px na telefonie */
+    padding: 14px 16px;
+  }
+
+  main{
+    padding: 18px 16px;
+  }
+
+  h2{
+    font-size: 1rem;
+  }
+
+  h3{
+    margin-top: 20px;
+  }
+}
+
+/* telefony */
+@media (max-width: 480px){
+  body{
+    padding: 10px;
+  }
+
+  .cv-wrapper{
+    border-radius: 12px;
+  }
+
+  header{
+    padding: 14px 12px;
+  }
+
+  .avatar{
+    width: 90px;
+    height: 90px;
+  }
+
+  .email-icon, .phone-icon, .linkedin-icon{
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+  }
+
+  main{
+    padding: 14px 12px;
+  }
+
+  aside{
+    padding: 12px 12px;
+  }
+
+  ul{
+    padding-left: 16px;
+  }
+
+  .title-block{
+    font-size: 1.05rem;
+  }
+
+  .period{
+    font-size: .75rem;
+  }
+}
+
+/* duże ekrany – lekki oddech */
+@media (min-width: 1100px){
+  .cv-wrapper{
+    max-width: 900px;
+  }
+
+  main{
+    padding: 36px 44px;
+  }
+}
